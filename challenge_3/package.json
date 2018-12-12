@@ -4,16 +4,16 @@
   "main": "server.js",
   "scripts": {
     "start": "nodemon server.js",
-    "build": "babel client -d lib"
+    "build": "babel client -d public -w",
+    "react-dev": "babel client --out-dir public --presets=env,react --source-maps inline --watch"
   },
   "author": "Eric Chiu",
   "license": "MIT",
   "devDependencies": {
-    "@babel/core": "^7.2.0",
-    "@babel/preset-env": "^7.2.0",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
-    "babel-preset-react-app": "^3.1.2",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
     "nodemon": "^1.18.8"
   },
   "dependencies": {

@@ -1,0 +1,37 @@
+html {
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+html * {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 50px;
+  padding: 0;
+  align-content: center;
+}
+
+.Form1 {
+  align-content: center;
+  margin-bottom: 10px;
+}
+.form1 { 
+  text-align: center;
+  align-content: center;
+  margin-bottom: 10px;
+}
+
+
+input {
+  display: flex;
+  font-size: 1rem;
+  height: 1.5rem;
+  border: solid 1px black;
+  border-bottom: 1px solid #ccc;
+}
+
+input:focus {
+  outline: solid black;
+}
