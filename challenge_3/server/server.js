@@ -6,7 +6,7 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser'); 
 
 /*Serving static files*/
-app.use(express.static(path.join(__dirname, '/public'))); 
+app.use(express.static(path.join(__dirname, '../public'))); 
 
 /*Middleware */
 app.use(morgan('dev')); 
@@ -18,5 +18,9 @@ app.use(bodyParser.json());
 app.get('/', function(req, res) { 
   res.status(200).send('Welcome to the homepage')
 });
+
+app.get('/signup', function(req, res) { 
+  
+})
 
 app.listen(port, () => console.log(`App listening on port ${port}...`)); 
