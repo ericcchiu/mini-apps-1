@@ -9,7 +9,8 @@ const db = require('./database/index');
 // console.log('THIS IS WHAT WE IMPORTED FROM DB', db)
 
 // MIDDLEWARE
-app.use(express.static(path.join(__dirname, '/client/dist')));
+// app.use(express.static(path.join(__dirname, '/client/dist')));
+app.use(express.static('./client/dist/'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(morgan('dev')); 
