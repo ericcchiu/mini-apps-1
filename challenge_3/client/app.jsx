@@ -43,7 +43,10 @@ class App extends React.Component {
 
   handleSignup(event) { 
     event.preventDefault(); 
-    console.log('THIS IS OUR CURRENT STATE!!!!', this.state.account);
+    console.log('Client/App Current Account State: ', this.state.account);
+    $.post('/signup', this.state.account)
+    .done((userAccount) => console.log('User account created from client', userAccount))
+    .fail((err) => console.log('Error creating a user account from client', err))
   }
 
   handleAddAddress(event) { 
