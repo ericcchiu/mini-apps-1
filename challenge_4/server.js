@@ -4,6 +4,9 @@ const bodyParser = require('body-parser');
 const port = 3000; 
 const morgan = require('morgan'); 
 const path = require('path'); 
+const db = require('./database/index');
+
+// console.log('THIS IS WHAT WE IMPORTED FROM DB', db)
 
 // MIDDLEWARE
 app.use(express.static(path.join(__dirname, '/client/dist')));
@@ -12,5 +15,32 @@ app.use(bodyParser.json());
 app.use(morgan('dev')); 
 
 // ROUTES
+app.get('/scores', function(req, res) { 
+  console.log('Accessed to /scores route'); 
+
+  console.log('Making a query to db'); 
+
+  db.query('Select * from scores', function(error, results) { 
+    if (error) { 
+      console.log('Error making a request to get all users from db', error); 
+    } else {
+      console.log('Our database results', results);
+      res.status(200).send(results);
+    }
+  }); 
+}); 
+
+app.post('/addScores', function(req, res) { 
+  console.log('Inside posting new scores'); 
+  db.query(`INSERT INTO scores (score, winner, challenger) values (20, 'Black', 'Red')`, function(error, results) { 
+    if(error) { 
+      console.log('Error posting/inserting new scores into database', error); 
+    } else { 
+      console.log('Our database response for posting', results); 
+      res.status(201).send(results);
+    }
+  });
+})
+
 
 app.listen(port, () => console.log(`Server listening on port ${port}...`));
