@@ -33,7 +33,15 @@ app.get('/scores', function(req, res) {
 
 app.post('/addScores', function(req, res) { 
   console.log('Inside posting new scores'); 
-  db.query(`INSERT INTO scores (score, winner, challenger) values (20, 'Black', 'Red')`, function(error, results) { 
+  const obj = { 
+    score: 22, 
+    winner: 'Black', 
+    challenger: 'Red'
+  }
+
+  const arrValues = [obj.score, obj.winner, obj.challenger];
+  const queryStr = `INSERT INTO scores (score, winner, challenger) values (?, ?, ?)`;
+  db.query(queryStr, arrValues, function(error, results) { 
     if(error) { 
       console.log('Error posting/inserting new scores into database', error); 
     } else { 
